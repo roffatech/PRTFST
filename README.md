@@ -8,7 +8,7 @@ Summary of Procedure
     @STAGED_TABLE         nvarchar(255)            The source table that has its data inserted into @REG_TABLE
     @TRUNCATE_FLAG        bit
 
-Semple Invocation
+Sample Invocation
 
     EXEC PRTFST 'CustomerTable', 'StagedCustomerTable', 0
 
