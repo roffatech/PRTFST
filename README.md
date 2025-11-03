@@ -1,5 +1,13 @@
 PRTFST - Populate regular table from staging table. 
 
+Files included:
+
+    PRTFST-process-and-data-flow.vsdx - VISIO diagram of process and data flow
+    PRTFST-process-and-data-flow.pdf  - PDF equivalent of VISO diagram
+    PRTFST.sql - source code for dropping and creating the stored procedure
+    README.md - This README file
+
+
 I often have to move data between two identically (or close enough) structured tables for a variety of reasons and while I could pull it off without manually writing lengthy INSERT INTO...SELECT FROM statements, it was still a tedious process. 
 
 Yes, you can often use INSERT INTO DestTable SELECT * FROM SourceTable and be done with it, but I ran into some obstacles. 
