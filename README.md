@@ -8,7 +8,7 @@ Obstacle 1: If DestTable has an IDENTITY column, you cannot use INSERT INTO Dest
 
 So in those cases I was having to select from sys.columns and build a column list from the results. 
 
-When I created these INSERT INTO DestTable(<specific column list>) SELECT <specific column list> FROM SourceTable scripts, I kept them in a folder for reuse, but it soon became unmanageable. I could not find the right script when I just knew I had created one the other day. Sometimes I made the same script more than once and sometimes the structure of DestTable and SourceTable had changed since I last created the script for them. 
+When I created these INSERT INTO DestTable([specific column list]) SELECT [specific column list] FROM SourceTable scripts, I kept them in a folder for reuse, but it soon became unmanageable. I could not find the right script when I just knew I had created one the other day. Sometimes I made the same script more than once and sometimes the structure of DestTable and SourceTable had changed since I last created the script for them. 
 
 Obstacle 2: It became a pain in the neck to maintain these scripts for reuse. 
 
@@ -22,10 +22,10 @@ Obstacle 4: I need to make sure the IDENTITY_INSERT property is set when it appl
 
 Given these conditions, I made a stored proc PRTFST to create dynamic SQL to generate these statements. 
 
-A. You can always run a statement in the form of INSERT INTO DestTable(<specific column list>) SELECT <specific column list> FROM SourceTable with two compatible tables. So the dynamic SQL created by PRTFST always creates the dynamic SQL in this manner. 
+A. You can always run a statement in the form of INSERT INTO DestTable([specific column list]) SELECT [specific column list] FROM SourceTable with two compatible tables. So the dynamic SQL created by PRTFST always creates the dynamic SQL in this manner. 
 B. IDENTITY_INSERT code is omitted from the dynamic SQL statement when it does not apply and included when it does apply.
 C. Truncating DestTable before data is added to it is controlled by a required parameter when invoking the stored proc, so I won't be so likely to forget that setting. 
-D. There are no scripts of INSERT INTO DestTable(<specific column list>) SELECT <specific column list> FROM SourceTable statements to maintain. 
+D. There are no scripts of INSERT INTO DestTable([specific column list]) SELECT [specific column list] FROM SourceTable statements to maintain. 
 
 In limited testing I have gotten this to work with several tables, with and without IDENTITY columns. 
 
