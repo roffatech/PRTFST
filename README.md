@@ -4,8 +4,12 @@ Summary of Procedure
 
     PROCEDURE PRTFST(@REG_TABLE, @STAGED_TABLE, @TRUNCATE_FLAG)
     
-    @REG_TABLE            nvarchar(255)            The destination table that receives the data from @STAGED_TABLE
-    @STAGED_TABLE         nvarchar(255)            The source table that has its data inserted into @REG_TABLE
+    @REG_TABLE            nvarchar(255)            The destination table that receives the data 
+                                                   from @STAGED_TABLE
+                                                    
+    @STAGED_TABLE         nvarchar(255)            The source table that has its data inserted 
+                                                   into @REG_TABLE
+                                                   
     @TRUNCATE_FLAG        bit
 
 Sample Invocation
@@ -14,15 +18,17 @@ Sample Invocation
 
     Creates and executes a dynamic SQL statement in the form:
     
-        INSERT INTO CustomerTable([specific column list]) SELECT [specific column list] FROM StagedCustomerTable
+        INSERT INTO CustomerTable([specific column list]) 
+        SELECT [specific column list] FROM StagedCustomerTable
 
-    Which adds all data from StagedCustomerTable into CustomerTable. Because @TRUNCATE_FLAG is 0, CustomerTable will not be truncated beforehand.
+    Which adds all data from StagedCustomerTable into CustomerTable. Because @TRUNCATE_FLAG is 0, 
+    CustomerTable will not be truncated beforehand.
 
 
 Files included:
 
     PRTFST-process-and-data-flow.vsdx - VISIO diagram of process and data flow
-    PRTFST-process-and-data-flow.pdf  - PDF equivalent of VISO diagram
+    PRTFST-process-and-data-flow.pdf  - PDF equivalent of VISIO diagram
     PRTFST.sql - source code for dropping and creating the stored procedure
     README.md - This README file
 
